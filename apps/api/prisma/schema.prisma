@@ -1,0 +1,74 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  LIBRARIAN
+  MEMBER
+}
+
+enum LoanStatus {
+  ACTIVE
+  RETURNED
+  OVERDUE
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  password     String
+  role         Role     @default(MEMBER)
+  refreshToken String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  loans        Loan[]
+
+  @@map("users")
+}
+
+model Book {
+  id          String    @id @default(cuid())
+  title       String
+  author      String
+  isbn        String?   @unique
+  description String?
+  genre       String[]
+  coverImage  String?
+  publisher   String?
+  publishedAt DateTime?
+  pages       Int?
+  language    String    @default("English")
+  copies      Int       @default(1)
+  available   Int       @default(1)
+  location    String?
+  tags        String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  loans       Loan[]
+
+  @@map("books")
+}
+
+model Loan {
+  id         String     @id @default(cuid())
+  bookId     String
+  userId     String
+  borrowedAt DateTime   @default(now())
+  dueDate    DateTime
+  returnedAt DateTime?
+  status     LoanStatus @default(ACTIVE)
+  notes      String?
+  book       Book       @relation(fields: [bookId], references: [id])
+  user       User       @relation(fields: [userId], references: [id])
+
+  @@map("loans")
+}
