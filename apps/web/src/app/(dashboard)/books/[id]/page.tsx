@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getServerSession } from '@/lib/auth/session';
+import { getServerSession } from '@/lib/auth/session.server';
 import { booksApi } from '@/lib/api/books';
 import { BookDetail } from '@/components/books/BookDetail';
 

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import { getServerSession } from '@/lib/auth/session';
+import { getServerSession } from '@/lib/auth/session.server';
 import { booksApi } from '@/lib/api/books';
 import { BookGrid } from '@/components/books/BookGrid';
 import { BookFilters } from '@/components/books/BookFilters';

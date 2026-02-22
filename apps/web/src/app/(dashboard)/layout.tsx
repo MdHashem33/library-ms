@@ -1,4 +1,4 @@
-import { getServerSession } from '@/lib/auth/session';
+import { getServerSession } from '@/lib/auth/session.server';
 import { redirect } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getServerSession } from '@/lib/auth/session';
+import { getServerSession } from '@/lib/auth/session.server';
 import { booksApi } from '@/lib/api/books';
 import { loansApi } from '@/lib/api/loans';
 import { usersApi } from '@/lib/api/users';

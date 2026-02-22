@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { BookOpen } from 'lucide-react';
 
@@ -17,7 +18,9 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold tracking-tight">Library Management</h1>
           <p className="text-sm text-muted-foreground mt-1">Sign in to your account</p>
         </div>
-        <LoginForm />
+        <Suspense fallback={null}>
+          <LoginForm />
+        </Suspense>
         <p className="text-center text-sm text-muted-foreground">
           Don&apos;t have an account?{' '}
           <a href="/register" className="font-medium text-primary hover:underline">

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getServerSession } from '@/lib/auth/session';
+import { getServerSession } from '@/lib/auth/session.server';
 import { redirect } from 'next/navigation';
 import { BookForm } from '@/components/books/BookForm';
 
