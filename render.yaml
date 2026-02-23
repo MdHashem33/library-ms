@@ -3,7 +3,7 @@ services:
     name: library-ms-api
     runtime: node
     buildCommand: npm install --include=dev && npm run db:generate --workspace=apps/api && npm run build --workspace=apps/api
-    startCommand: cd apps/api && npx prisma db push && node dist/main
+    startCommand: cd apps/api && npx prisma db push && node dist/src/main
     envVars:
       - key: NODE_ENV
         value: production
